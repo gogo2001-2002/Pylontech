@@ -1,93 +1,42 @@
-# Pylontest
-[![Version](https://img.shields.io/badge/Symcon-PHPModul-red.svg)](https://www.symcon.de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/)
-[![Version](https://img.shields.io/badge/Symcon%20Version-5.0%20%3E-green.svg)](https://www.symcon.de/forum/threads/37412-IP-Symcon-5-0-%28Testing%29)
+# Pylontech für IP-Symcon
 
-Modul für IP-Symcon ab Version 5.
+Dieses Repository enthält ein IP-Symcon-Modul zur Kommunikation mit Pylontech-Batteriespeichern. Es besteht aus einem Splitter für die Weiterleitung zwischen IP-Symcon-I/O und Geräteinstanzen, einer Instanz für einzelne Batterien sowie einer Stack-Instanz zur Zusammenfassung mehrerer Batterien.
 
-## Dokumentation
+## Funktionen
 
-**Inhaltsverzeichnis**
+### Einzelne Pylontech-Batterie
 
-1. [Funktionsumfang](#1-funktionsumfang)  
-2. [Voraussetzungen](#2-voraussetzungen)  
-3. [Installation](#3-installation)  
-4. [Funktionsreferenz](#4-funktionsreferenz)
-5. [Konfiguration](#5-konfiguartion)  
-6. [Anhang](#6-anhang)  
+Die Geräteinstanz liest – abhängig von der Konfiguration – folgende Werte aus:
 
-## 1. Funktionsumfang
+- bis zu 15 Zellspannungen
+- bis zu 5 Temperaturen
+- aktuelle und nominale Kapazität sowie Ladezustandswerte
+- Gesamtspannung und Strom
+- Zyklenzahl
+- Geräteversion
 
-Beschreibung 
+Für jede Batterie lässt sich eine Adresse von 1 bis 8 einstellen. Zellspannungen, Temperaturen, Kapazitätswerte, Gesamtspannung, Strom und Zyklenzahl können einzeln aktiviert werden. Das Aktualisierungsintervall wird in Minuten angegeben; ein Intervall von 0 deaktiviert den Timer.
 
-### Funktionen:  
+### Pylontech-Stack
 
- - Funktion 1 
- - funktion 2
-	  
+Die Stack-Instanz aktualisiert die zugeordneten Batterieinstanzen und fasst ihre Werte zusammen. Sie stellt unter anderem Gesamtkapazität, Stromsumme, Durchschnittsspannung, berechneten Ladezustand und Energie bereit. Zusätzlich ermittelt sie die niedrigste und höchste Zellspannung einschließlich Batterie- und Zellnummer sowie die Spannungsdifferenz.
 
-## 2. Voraussetzungen
+## Bestandteile
 
- - IPS 5.x
- - weitere Vorraussetzungen.
+- `IPSPylontechSplitter`: leitet Daten zwischen der IP-Symcon-I/O-Instanz und den Geräteinstanzen weiter.
+- `IPSPylontech`: kommuniziert mit einer einzelnen Batterie und stellt deren Messwerte bereit.
+- `IPSPylonstack`: fasst die Messwerte der zugeordneten Batterien zusammen.
 
-## 3. Installation
+## Installation
 
-### a. Laden des Moduls
+1. In IP-Symcon unter **Kerninstanzen → Modules** das Repository hinzufügen:
+   `https://github.com/gogo2001-2002/Pylontech`
+2. Eine passende I/O-Instanz und den Pylontech-Splitter einrichten und verbinden.
+3. Für jede Batterie eine `IPSPylontech`-Instanz anlegen, Adresse und gewünschte Messwerte konfigurieren.
+4. Für mehrere Batterien eine `IPSPylonstack`-Instanz anlegen und die Batterieinstanzen dieser Stack-Instanz zuordnen.
 
-Die IP-Symcon (min Ver. 5.x) Konsole öffnen. Im Objektbaum unter Kerninstanzen die Instanz __*Modules*__ durch einen doppelten Mausklick öffnen.
+Die Modul-Metadaten nennen IP-Symcon 5.0 als Kompatibilitätsbasis. Die tatsächliche Kommunikation hängt von der verwendeten I/O-Hardware und deren Konfiguration ab.
 
-In der _Modules_ Instanz rechts oben auf den Button __*Hinzufügen*__ drücken.
- 
-In dem sich öffnenden Fenster folgende URL hinzufügen:
+## Hinweise
 
-	
-    `https://github.com/Git_Name/IPSymconXXX`  
-    
-und mit _OK_ bestätigen.    
-        
-Anschließend erscheint ein Eintrag für das Modul in der Liste der Instanz _Modules_    
-
-
-### b. Einrichtung in IPS
-
-In IP-Symcon nun _Instanz hinzufügen_ (_CTRL+1_) auswählen unter der Kategorie, unter der man die Instanz hinzufügen will, und _xxx_ auswählen.
-
-
-## 4. Funktionsreferenz
-
-### Überschrift:
-
-Beschreibungstext
-	
-
-
-## 5. Konfiguration:
-
-### Überschrift:
-
-| Eigenschaft | Typ     | Standardwert | Funktion                                  |
-| :---------: | :-----: | :----------: | :---------------------------------------: |
-| Wert 1      | string  |              | Beschreibung                              |
-| Wert 2      | integer |    20        | Beschreibung                              |
-
-
-
-
-
-
-## 6. Anhang
-
-###  a. Funktionen:
-
-#### Überschrift:
-
-`_Function(integer $InstanceID)`
-
-Beschreibung Funktion
-
-
-###  b. GUIDs und Datenaustausch:
-
-#### Überschrift:
-
-GUID: `{AE6E37A8-7241-25CF-005E-9153F322250C}` 
+Das Repository bildet den aktuellen Quellstand aus der Symcon-Installation ab. Die Dateien `module1.php` und `module_ori.php` sind ebenfalls enthalten, werden von IP-Symcon jedoch nicht als Modul-Einstiegspunkt verwendet; dieser ist jeweils `module.php`.
