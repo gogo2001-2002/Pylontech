@@ -1,0 +1,11 @@
+{
+	"id": "{AE6E37A8-7241-25CF-005E-9153F322250C}",
+	"name": "IPSPylontech",
+	"type": 3,
+	"vendor": "",
+	"aliases": ["Pylontech Modul"],
+	"parentRequirements": ["{4B53FBDB-28B2-0A2F-B471-DEF8A43EA262}"],
+	"childRequirements": [],
+	"implemented": ["{DA983FFD-8C79-4762-AA1F-38DB2CD9E383}"],
+	"prefix": "PTECH"
+}
