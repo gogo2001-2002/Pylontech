@@ -1,0 +1,11 @@
+{
+	"id": "{0AA9FCB6-7C3F-0C43-E3CD-6A4E9693D301}",
+	"name": "IPSPylonstack",
+	"type": 3,
+	"vendor": "",
+	"aliases": ["Pylontech Stack"],
+	"parentRequirements": [],
+	"childRequirements": ["{AE6E37A8-7241-25CF-005E-9153F322250C}"],
+	"implemented": [],
+	"prefix": "PSTACK"
+}
