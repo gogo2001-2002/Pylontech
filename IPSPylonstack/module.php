@@ -14,7 +14,7 @@ class IPSPylonstack extends IPSModule
         	//You cannot use variables here. Just static values.
 		$this->RegisterPropertyInteger("timer", 5);
                 $this->RegisterPropertyBoolean("Ladezustand",FALSE);
-		$this->RegisterTimer('Update', 0, ' PSTACK_Update($_IPS[\'TARGET\'], 0);');
+		$this->RegisterTimer('Update', 0, ' PSTACK_Update($_IPS[\'TARGET\']);');
 		$this->RegisterProfile("Charge_Ah","EnergyStorage",""," Ah",0,0,0,1,2);
 		$this->RegisterProfile("Charge_KWh","EnergykwStorage",""," kWh",0,0,0,1,2);
 		$this->RegisterProfile("SYNO_Percent","EnergykwStorage",""," %",0,0,0,1,2);
