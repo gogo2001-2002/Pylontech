@@ -1,0 +1,11 @@
+{
+    "id": "{2D76759A-6F96-3DE1-7FBF-371BDE57B9E5}",
+    "name": "IPSPylontechSplitter",
+    "type": 2,
+    "vendor": "",
+    "aliases": ["IPS Pylontech Splitter"],
+    "parentRequirements": ["{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}"],
+    "childRequirements": ["{DA983FFD-8C79-4762-AA1F-38DB2CD9E383}"],
+    "implemented": ["{018EF6B5-AB94-40C6-AA53-46943E824ACF}", "{4B53FBDB-28B2-0A2F-B471-DEF8A43EA262}"],
+    "prefix": "PTS"
+}
